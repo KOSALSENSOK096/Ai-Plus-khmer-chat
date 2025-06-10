@@ -1,0 +1,163 @@
+<!-- Code Complete Review: 20240815120000 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D4ED8'%3E%3Cpath fill-rule='evenodd' d='M4.804 21.644A6.707 6.707 0 0010.5 18.75h3a6.707 6.707 0 005.696 2.894 1.5 1.5 0 00.304-2.965A5.23 5.23 0 0018.75 15V6.75A5.25 5.25 0 0013.5 1.5h-3A5.25 5.25 0 005.25 6.75v8.25c0 .922.182 1.81.507 2.636a1.5 1.5 0 00-.96 2.758zM12 12.75H9a.75.75 0 000 1.5h3a.75.75 0 000-1.5zm3-3H9a.75.75 0 000 1.5h6a.75.75 0 000-1.5z' clip-rule='evenodd' /%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D4ED8'%3E%3Cpath fill-rule='evenodd' d='M4.804 21.644A6.707 6.707 0 0010.5 18.75h3a6.707 6.707 0 005.696 2.894 1.5 1.5 0 00.304-2.965A5.23 5.23 0 0018.75 15V6.75A5.25 5.25 0 0013.5 1.5h-3A5.25 5.25 0 005.25 6.75v8.25c0 .922.182 1.81.507 2.636a1.5 1.5 0 00-.96 2.758zM12 12.75H9a.75.75 0 000 1.5h3a.75.75 0 000-1.5zm3-3H9a.75.75 0 000 1.5h6a.75.75 0 000-1.5z' clip-rule='evenodd' /%3E%3C/svg%3E" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1D4ED8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+    <title>AI Plus Khmer Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind CSS Configuration
+      tailwind.config = {
+        darkMode: 'class', // Enabled dark mode using class strategy
+        theme: {
+          extend: {
+            fontFamily: {
+              // Default sans-serif: Prioritize "Inter" for general text.
+              // "Kantumruy Pro" is included to ensure Khmer characters are rendered correctly
+              // if they appear in general text and are not covered by "Inter". This makes "Kantumruy Pro"
+              // a primary fallback for Khmer glyphs within the standard sans-serif stack.
+              sans: ['Inter', 'Kantumruy Pro', 'sans-serif'],
+              // "Kantumruy Pro" is the explicitly designated primary font for Khmer text.
+              // "Inter" serves as a fallback for non-Khmer glyphs (e.g., Latin characters, numbers)
+              // or if "Kantumruy Pro" is unavailable. "sans-serif" is the final generic fallback.
+              // This is primarily used with the `font-khmer` utility class.
+              khmer: ['Kantumruy Pro', 'Inter', 'sans-serif'], 
+              // Ensure "Kantumruy Pro" and "Inter" are prioritized for Khmer/Latin glyphs in monospace contexts.
+              // This makes "Kantumruy Pro" a primary fallback for Khmer glyphs within the monospace stack.
+              mono: ['Kantumruy Pro', 'Inter', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+            },
+            colors: {
+              primary: '#1D4ED8', // Blue-700
+              secondary: '#F97316', // Orange-500
+              accent: '#10B981', // Emerald-500
+              lightgray: '#F3F4F6', // Gray-100 
+              mediumgray: '#D1D5DB', // Gray-300
+              darkgray: '#374151',   // Gray-700 (Used as primary text in light mode)
+              
+              'app-bg-light': '#FFFFFF', 
+              'app-bg-dark': '#111827',  
+              'text-main-light': '#1F2937', 
+              'text-main-dark': '#F3F4F6',  
+              'surface-light': '#FFFFFF', 
+              'surface-dark': '#1F2937',  
+              'border-light': '#E5E7EB', 
+              'border-dark': '#374151',   
+            },
+            animation: {
+              modalShow: 'modalShow 0.3s ease-out forwards'
+            },
+            keyframes: {
+              modalShow: {
+                '0%': { opacity: '0', transform: 'scale(0.95)' },
+                '100%': { opacity: '1', transform: 'scale(1)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "@/": "./",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.2",
+    "jwt-decode": "https://esm.sh/jwt-decode@^4.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.3.0",
+    "mermaid": "https://esm.sh/mermaid@10.9.1/dist/mermaid.esm.min.mjs"
+  }
+}
+</script>
+<style>
+  /* Updated body styling for consistent dark theme and chat page */
+  body {
+    @apply bg-slate-50 text-slate-800 transition-colors duration-300 ease-in-out dark:bg-slate-900 dark:text-slate-200;
+  }
+  /* Ensure html also gets dark background for full page theme */
+  html.dark {
+    @apply bg-slate-900;
+  }
+
+  /* 
+    Global rule for Khmer text using :lang() pseudo-class.
+    "Kantumruy Pro" is the designated primary font for all Khmer text throughout the application.
+    "Inter" serves as a fallback for non-Khmer glyphs (e.g., Latin characters, numbers)
+    or if "Kantumruy Pro" is unavailable. "sans-serif" is the final generic fallback.
+    This rule is activated by setting the `lang="km"` attribute on the <html> tag or specific elements.
+    The Tailwind font configuration (fontFamily.sans, .khmer, .mono) also ensures Kantumruy Pro is prioritized for Khmer.
+  */
+  :lang(km) {
+    font-family: "Kantumruy Pro", "Inter", sans-serif;
+  }
+
+  /* Styles for Mermaid diagram container */
+  .mermaid-diagram-container {
+    @apply p-2 rounded-md my-1.5 bg-white dark:bg-slate-800 overflow-x-auto;
+  }
+  .mermaid-diagram-container svg {
+    @apply min-w-full block mx-auto; /* Ensure SVG scales and centers */
+  }
+  /* Ensure Khmer font is prioritized within rendered Mermaid SVGs */
+  .mermaid-diagram-container svg text,
+  .mermaid-diagram-container svg tspan { /* Target all text elements */
+    font-family: "Kantumruy Pro", "Inter", sans-serif; /* Rely on mermaid.initialize fontFamily, this is a fallback. */
+  }
+
+  /* Styles for animated thinking dots */
+  .thinking-dot {
+    animation: thinking-blink 1.4s infinite both;
+    display: inline-block; /* Ensure dots take up space for animation */
+  }
+  .thinking-dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .thinking-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .thinking-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  @keyframes thinking-blink {
+    0%, 80%, 100% { opacity: 0; }
+    40% { opacity: 1; }
+  }
+
+  /* HomePage specific animation styles */
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Start hidden */
+  }
+
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "name": "AI Plus Khmer Chat",
+  "description": "Intelligent Gemini-powered chat application with bilingual (Khmer/English) support, user accounts, Premium/Ultra2 plans (mock activation), image uploads, voice input, diagram generation, Google Search, configurable AI styles, and persistent chat history. Includes a Code Playground with CodeBot (generate/analyze/correct code), an Image Generator, and File Conversion tools (simulated PDF-to-Word, AI Image-to-Text, AI Khmer Text Refiner). Code Complete Review: 20240815120000.",
+  "prompt": ""
+}

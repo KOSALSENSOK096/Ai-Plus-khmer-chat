@@ -1,0 +1,17 @@
+{
+  "name": "AI Plus Khmer Chat",
+  "short_name": "AI Khmer Chat",
+  "description": "Advanced AI chat (Gemini 'gemini-2.5-flash-preview-04-17') with Khmer/English support, user accounts, Premium plans, Code Playground (CodeBot), Image Generator, File Converter, diagramming, voice input, history, and settings. Code Complete (Reviewed: 20240815120000).",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1D4ED8",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D4ED8'%3E%3Cpath fill-rule='evenodd' d='M4.804 21.644A6.707 6.707 0 0010.5 18.75h3a6.707 6.707 0 005.696 2.894 1.5 1.5 0 00.304-2.965A5.23 5.23 0 0018.75 15V6.75A5.25 5.25 0 0013.5 1.5h-3A5.25 5.25 0 005.25 6.75v8.25c0 .922.182 1.81.507 2.636a1.5 1.5 0 00-.96 2.758zM12 12.75H9a.75.75 0 000 1.5h3a.75.75 0 000-1.5zm3-3H9a.75.75 0 000 1.5h6a.75.75 0 000-1.5z' clip-rule='evenodd' /%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
