@@ -1,0 +1,114 @@
+{
+  "navbar": {
+    "pricing": "Pricing",
+    "login": "Login",
+    "register": "Register"
+  },
+  "homePage": {
+    "hero": {
+      "title": "AI+ ខ្មែរ CHAT",
+      "subtitle": "Empowering communication, one line of code at a time.",
+      "button": {
+        "startChatting": "Start Chatting",
+        "viewPricing": "View Pricing"
+      },
+      "authPrompt": {
+        "prefix": "Already have an account?",
+        "loginLink": "Login",
+        "separator": "or",
+        "registerLink": "Register",
+        "suffix": "to get started"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Sign Up",
+        "description": "Create your account in seconds"
+      },
+      "step2": {
+        "title": "Choose Your Plan",
+        "description": "Select the plan that fits your needs"
+      },
+      "step3": {
+        "title": "Start Chatting",
+        "description": "Begin your bilingual AI conversation"
+      },
+      "step4": {
+        "title": "Explore Features",
+        "description": "Discover all our powerful tools"
+      }
+    },
+    "featureSpotlight": {
+      "title": "Feature Spotlight",
+      "codePlayground": {
+        "title": "Code Playground",
+        "description": "Interactive coding environment with AI assistance",
+        "link": "Try It Now"
+      },
+      "imageGenerator": {
+        "title": "Image Generator",
+        "description": "Create stunning images with AI",
+        "link": "Generate Images"
+      },
+      "fileConverter": {
+        "title": "File Converter",
+        "description": "Convert files between formats easily",
+        "link": "Convert Files"
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "bilingual": {
+        "title": "Bilingual Support",
+        "description": "Seamless English and Khmer communication"
+      },
+      "imageAnalysis": {
+        "title": "Image Analysis",
+        "description": "Advanced AI-powered image recognition"
+      },
+      "diagramGeneration": {
+        "title": "Diagram Generation",
+        "description": "Create professional diagrams instantly"
+      },
+      "voiceInput": {
+        "title": "Voice Input",
+        "description": "Natural voice interaction in both languages"
+      }
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us",
+      "userFriendly": {
+        "title": "User Friendly",
+        "description": "Intuitive interface for all skill levels"
+      },
+      "cuttingEdgeAI": {
+        "title": "Cutting-Edge AI",
+        "description": "Powered by the latest AI technology"
+      },
+      "securePrivate": {
+        "title": "Secure & Private",
+        "description": "Your data is protected and encrypted"
+      }
+    },
+    "meetTheCreator": {
+      "title": "Meet the Creator",
+      "name": "KOSAL SENSOK",
+      "bio": "Passionate about bringing AI technology to Cambodia"
+    },
+    "discover": {
+      "title": "Discover More",
+      "subtitle": "Explore all the possibilities with AI+ ខ្មែរ CHAT",
+      "button": {
+        "explore": "Start Exploring"
+      }
+    },
+    "poweredByAI": {
+      "title": "Powered by AI",
+      "subtitle": "Using the latest in artificial intelligence technology"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 AI+ ខ្មែរ CHAT. All rights reserved."
+  }
+} 

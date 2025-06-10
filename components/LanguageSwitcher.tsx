@@ -1,37 +1,24 @@
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, MenuItem, useColorMode } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const LanguageSwitcher = () => {
-  const router = useRouter();
-  const { i18n } = useTranslation();
-
-  const languages = [
-    { code: 'en', label: 'English' },
-    { code: 'km', label: 'ខ្មែរ' },
-  ];
-
-  const handleLanguageChange = (languageCode: string) => {
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: languageCode });
-  };
+  const { language, setLanguage } = useLanguage();
+  const { colorMode } = useColorMode();
 
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />} variant="ghost">
-        {languages.find(lang => lang.code === router.locale)?.label || 'English'}
+      <MenuButton 
+        as={Button} 
+        rightIcon={<ChevronDownIcon />} 
+        variant="ghost"
+        color={colorMode === 'dark' ? 'white' : 'gray.800'}
+      >
+        {language === 'en' ? 'EN' : 'ខ្មែរ'}
       </MenuButton>
       <MenuList>
-        {languages.map((language) => (
-          <MenuItem
-            key={language.code}
-            onClick={() => handleLanguageChange(language.code)}
-            fontWeight={router.locale === language.code ? 'bold' : 'normal'}
-          >
-            {language.label}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={() => setLanguage('en')} value="en">English</MenuItem>
+        <MenuItem onClick={() => setLanguage('km')} value="km">ខ្មែរ</MenuItem>
       </MenuList>
     </Menu>
   );

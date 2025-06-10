@@ -1,16 +1,22 @@
 // Code Complete Review: 20240815120000
-import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, useCallback, useContext } from 'react';
 import { LanguageCode, Translations } from '../types';
 import { APP_LANGUAGE_KEY } from '../constants';
+import { useRouter } from 'next/router';
 
-interface LanguageContextType {
-  currentLanguage: LanguageCode;
-  setLanguage: (language: LanguageCode) => void;
-  translations: Translations;
-  isLoadingTranslations: boolean;
-}
+type LanguageContextType = {
+  language: string;
+  setLanguage: (lang: string) => void;
+};
 
-export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const defaultLanguage = 'en';
+
+const LanguageContext = createContext<LanguageContextType>({
+  language: defaultLanguage,
+  setLanguage: () => {},
+});
+
+export const useLanguage = () => useContext(LanguageContext);
 
 interface LanguageProviderProps {
   children: ReactNode;
@@ -43,31 +49,26 @@ const fetchTranslations = async (language: LanguageCode): Promise<Translations> 
   }
 };
 
-
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguageState] = useState<LanguageCode>(() => {
-    const storedLanguage = localStorage.getItem(APP_LANGUAGE_KEY) as LanguageCode | null;
-    return storedLanguage || 'en'; // Default to English
-  });
-  const [translations, setTranslations] = useState<Translations>({});
-  const [isLoadingTranslations, setIsLoadingTranslations] = useState(true);
+export const LanguageProvider = ({ children }: LanguageProviderProps) => {
+  const router = useRouter();
+  const [language, setLanguage] = useState(defaultLanguage);
 
   useEffect(() => {
-    setIsLoadingTranslations(true);
-    fetchTranslations(currentLanguage).then(loadedTranslations => {
-      setTranslations(loadedTranslations);
-      setIsLoadingTranslations(false);
-    });
-    document.documentElement.lang = currentLanguage; // Set lang attribute on HTML tag
-  }, [currentLanguage]);
-
-  const setLanguage = useCallback((language: LanguageCode) => {
-    localStorage.setItem(APP_LANGUAGE_KEY, language);
-    setCurrentLanguageState(language);
+    const savedLanguage = localStorage.getItem('language') || defaultLanguage;
+    setLanguage(savedLanguage);
+    if (router.locale !== savedLanguage) {
+      router.push(router.pathname, router.asPath, { locale: savedLanguage });
+    }
   }, []);
 
+  const handleSetLanguage = (lang: string) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang);
+    router.push(router.pathname, router.asPath, { locale: lang });
+  };
+
   return (
-    <LanguageContext.Provider value={{ currentLanguage, setLanguage, translations, isLoadingTranslations }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

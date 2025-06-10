@@ -1,9 +1,15 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
+
+const config: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: true,
+};
 
 const theme = extendTheme({
+  config,
   fonts: {
-    heading: '"Noto Sans", "Noto Sans Khmer", sans-serif',
-    body: '"Noto Sans", "Noto Sans Khmer", sans-serif',
+    heading: `'Noto Sans', sans-serif`,
+    body: `'Noto Sans', sans-serif`,
   },
   colors: {
     brand: {
@@ -21,24 +27,8 @@ const theme = extendTheme({
   },
   components: {
     Button: {
-      baseStyle: {
-        fontWeight: 'normal',
-      },
-      variants: {
-        solid: {
-          bg: 'brand.500',
-          color: 'white',
-          _hover: {
-            bg: 'brand.600',
-          },
-        },
-        outline: {
-          borderColor: 'brand.500',
-          color: 'brand.500',
-          _hover: {
-            bg: 'brand.50',
-          },
-        },
+      defaultProps: {
+        colorScheme: 'teal',
       },
     },
     Heading: {

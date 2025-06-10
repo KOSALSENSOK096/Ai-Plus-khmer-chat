@@ -1,9 +1,12 @@
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { appWithTranslation } from 'next-i18next';
+import { LanguageProvider } from '../contexts/LanguageContext';
 import theme from '../theme';
 import { Noto_Sans } from 'next/font/google';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const notoSans = Noto_Sans({
   weight: ['400', '700'],
@@ -11,6 +14,15 @@ const notoSans = Noto_Sans({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    // 如果没有指定语言，默认使用英语
+    if (!router.locale) {
+      router.push(router.pathname, router.asPath, { locale: 'en' });
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -27,7 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <LanguageProvider>
+          <Component {...pageProps} />
+        </LanguageProvider>
       </ChakraProvider>
     </>
   );
