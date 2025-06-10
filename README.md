@@ -1,5 +1,53 @@
 # AI Plus Khmer Chat
 
+基于Gemini AI的柬埔寨语聊天应用
+
+## 功能特点
+
+- 支持柬埔寨语和英语的实时对话
+- 集成Google Gemini AI模型
+- 支持图片生成功能
+- 提供多种交互风格
+- 支持技术性和普通用户友好的对话模式
+
+## 技术栈
+
+- Next.js
+- TypeScript
+- Google Gemini AI API
+- Vercel部署
+
+## 本地开发
+
+1. 克隆仓库：
+```bash
+git clone https://github.com/KOSALSENSOK096/Ai-Plus-khmer-chat.git
+```
+
+2. 安装依赖：
+```bash
+npm install
+```
+
+3. 配置环境变量：
+创建`.env.local`文件并添加必要的环境变量：
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+4. 运行开发服务器：
+```bash
+npm run dev
+```
+
+## 在线演示
+
+访问 [https://ai-plus-khmer-chat.vercel.app/](https://ai-plus-khmer-chat.vercel.app/) 查看在线演示。
+
+## 许可证
+
+MIT
+
 <!-- Code Complete Review: 20240815120000 -->
 This application is an intelligent chat platform powered by the Gemini API. It features:
 
@@ -55,7 +103,4 @@ This application is an intelligent chat platform powered by the Gemini API. It f
 
 ## Current Status
 
-As of the latest review (Timestamp: 20240815120000), the application's core features, as detailed above, are fully implemented and operational according to the designed specifications. This includes the ChatPage, CodePlaygroundPage (with CodeBot), ImageGeneratorPage, FileConverterPage, and all related AI interactions and UI components. All options, functions, and buttons are intended to function as described. The system adheres to the provided Gemini API guidelines (including model usage and `thinkingConfig` application) and is considered "code complete."# Ai-Plus-khmer-chat
-# Ai-Plus-khmer-chat
-# Ai-Plus-khmer-chat
-# Ai-Plus-khmer-chat
+As of the latest review (Timestamp: 20240815120000), the application's core features, as detailed above, are fully implemented and operational according to the designed specifications. This includes the ChatPage, CodePlaygroundPage (with CodeBot), ImageGeneratorPage, FileConverterPage, and all related AI interactions and UI components. All options, functions, and buttons are intended to function as described. The system adheres to the provided Gemini API guidelines (including model usage and `thinkingConfig` application) and is considered "code complete."
