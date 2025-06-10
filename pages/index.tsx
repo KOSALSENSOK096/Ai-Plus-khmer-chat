@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Box, Container, Heading, Text, Button, SimpleGrid, VStack, Icon, Flex, Divider } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, Button, SimpleGrid, VStack, Icon, Flex } from '@chakra-ui/react';
+import { Divider } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { FaCode, FaImage, FaFileAlt, FaMicrophone, FaShieldAlt, FaRobot, FaUserFriends } from 'react-icons/fa';
 import LanguageSwitcher from '../components/LanguageSwitcher';
@@ -52,11 +53,11 @@ const Home: NextPage = () => {
           </Box>
           <Text mt={4} fontSize="sm" color="gray.600">
             {t('homePage.hero.authPrompt.prefix')}{' '}
-            <Button variant="link" colorScheme="teal" mx={1}>
+            <Button variant="ghost" colorScheme="teal" mx={1}>
               {t('homePage.hero.authPrompt.loginLink')}
             </Button>{' '}
             {t('homePage.hero.authPrompt.separator')}{' '}
-            <Button variant="link" colorScheme="teal" mx={1}>
+            <Button variant="ghost" colorScheme="teal" mx={1}>
               {t('homePage.hero.authPrompt.registerLink')}
             </Button>{' '}
             {t('homePage.hero.authPrompt.suffix')}
